@@ -1,0 +1,23 @@
+{
+  "name": "password-generator",
+  "version": "1.0.0",
+  "description": "Generate secure and memorable passwords",
+  "keywords": [
+    "password generator"
+  ],
+  "homepage": "https://github.com/temp4422/password-generator#readme",
+  "bugs": {
+    "url": "https://github.com/temp4422/password-generator/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/temp4422/password-generator.git"
+  },
+  "license": "MIT",
+  "author": "temp4422",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
