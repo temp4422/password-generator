@@ -19,12 +19,18 @@
   "main": "index.js",
   "scripts": {
     "dev": "browser-sync start --server 'dist/' --files 'src/' --port 3000 --no-open --no-notify & node watch.js",
+    "prebuild": "npm run lint && npm run format",
     "build": "node app.js && npx @tailwindcss/cli -i ./src/style.css -o ./dist/style.css",
-    "start": "serve ./dist/"
+    "start": "serve ./dist/",
+    "lint": "echo lint",
+    "format": "npx prettier --write src/",
+    "lighthouse": "cd ./lighthouse/ && lighthouse http://localhost:3000 --quiet --chrome-flags='--headless'"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.6",
     "browser-sync": "^3.0.3",
+    "prettier": "^3.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.6"
   }
 }
