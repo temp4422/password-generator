@@ -1,22 +1,40 @@
-const generate = document.querySelector('#generate')
-const copy = document.querySelector('#copy')
-const password = document.querySelector('#password')
+import wordsData from './words.json' with { type: 'json' }
 
-generate.addEventListener('click', () => {
+const generateButton = document.querySelector('#generate')
+const copyButton = document.querySelector('#copy')
+const passwordInput = document.querySelector('#password')
+
+generateButton.addEventListener('click', () => {
   // password.value = Math.random().toString(36).slice(-8)
-  const charset =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&*+,-./:;<=>?@^_|~'
-  const passwordLength = 20
-  const randomValues = new Uint32Array(passwordLength)
-  crypto.getRandomValues(randomValues)
-  let securePassword = ''
-  for (let i = 0; i < passwordLength; i++) {
-    securePassword += charset[randomValues[i] % charset.length]
+  // Constants
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  const upperCaseAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const numbers = '0123456789'
+  const symbols = '!#$%&*+,-./:;<=>?@^_|~'
+  const delimeters = '*+,-.=_~'
+  const wordsArray = wordsData.words
+
+  // Set values
+  const newDelimeter = delimeters[Math.floor(Math.random() * delimeters.length)]
+  const numberOfWords = 3
+
+  // Generate password
+  let password = ''
+  for (let i = 0; i < numberOfWords; i++) {
+    password += wordsArray[Math.floor(Math.random() * wordsArray.length)]
+    // TODO add random capitalization
+    // if (Math.random() > 0.5) password = password.charAt(0).toUpperCase() + password.slice(1)
+    password += newDelimeter
   }
-  password.value = securePassword
+
+  password += String(Math.floor(Math.random() * 10000)).padStart(4, '0')
+  password += symbols[Math.floor(Math.random() * symbols.length)]
+
+  // Insert password into input
+  passwordInput.value = password
 })
 
-copy.addEventListener('click', () => {
-  password.select()
-  navigator.clipboard.writeText(password.value)
+copyButton.addEventListener('click', () => {
+  passwordInput.select()
+  navigator.clipboard.writeText(passwordInput.value)
 })
