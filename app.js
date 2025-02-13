@@ -8,6 +8,8 @@ const __dirname = path.dirname(__filename)
 const sourceDir = path.join(__dirname, 'src')
 const destinationDir = path.join(__dirname, 'dist')
 
+fs.rmSync(destinationDir, { recursive: true, force: true })
+
 function copyFiles(source, destination) {
   if (!fs.existsSync(destination)) {
     fs.mkdirSync(destination, { recursive: true })
