@@ -1,0 +1,17 @@
+name: password-generator
+
+services:
+  app:
+    # build: . # Build the application from the current directory Dockerfile
+    build:
+      context: .
+      target: dev
+      # dockerfile: Dockerfile
+    restart: 'no'
+    container_name: password-generator
+    # env_file: ./.env
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app

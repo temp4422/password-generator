@@ -1,0 +1,12 @@
+name: password-generator
+
+services:
+  app:
+    build:
+      context: .
+      target: prod
+    restart: on-failure:3
+    container_name: password-generator
+    # env_file: ./.env.production
+    # environment:
+    # - DOTENV_KEY=${DOTENV_KEY} # Set in gihub-actions
