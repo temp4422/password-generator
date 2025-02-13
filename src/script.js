@@ -12,7 +12,8 @@ function generatePassword() {
   const NUMBER_OF_WORDS = 3
 
   function getRandom(length) {
-    return Math.floor(Math.random() * length)
+    let randomBuffer = self.crypto.getRandomValues(new Uint32Array(1))
+    return randomBuffer[0] % length
   }
 
   // Get random words
