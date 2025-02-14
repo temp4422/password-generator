@@ -8,7 +8,7 @@ services:
     restart: on-failure:3
     container_name: password-generator
     ports:
-      - 3000:3000
+      - 3002:3000
     # env_file: ./.env.production
     # environment:
     # - DOTENV_KEY=${DOTENV_KEY} # Set in gihub-actions
