@@ -9,6 +9,8 @@ services:
       # dockerfile: Dockerfile
     restart: 'no'
     container_name: password-generator
+    ports:
+      - 3000:3000
     # env_file: ./.env
     develop:
       watch:
