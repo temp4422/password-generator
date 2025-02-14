@@ -5,7 +5,7 @@ services:
     build:
       context: .
       target: prod
-    restart: on-failure:3
+    restart: unless-stopped
     container_name: password-generator
     ports:
       - 3002:3000
