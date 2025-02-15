@@ -18,8 +18,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev:docker": "docker compose -f docker-compose.dev.yaml up --build --watch",
     "dev": "browser-sync start --server 'dist/' --files 'src/' --port 3000 --no-open --no-notify & node watch.js",
+    "dev:docker": "docker compose -f docker-compose.dev.yaml up --build --watch",
     "prebuild": "npm run lint && npm run format",
     "build": "node server.js && npx @tailwindcss/cli -i ./src/style.css -o ./dist/style.css",
     "start": "serve ./dist/",
