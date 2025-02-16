@@ -19,11 +19,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "browser-sync start --server 'dist/' --files 'src/' --port 3000 --no-open --no-notify & node watch.js",
-    "dev:docker": "docker compose -f docker-compose.dev.yaml up --build --watch",
     "prebuild": "npm run lint && npm run format",
     "build": "node server.js && npx @tailwindcss/cli -i ./src/style.css -o ./dist/style.css",
     "start": "serve ./dist/",
-    "start:docker": "docker compose up -d --build",
+    "docker:dev": "docker compose -f docker-compose.dev.yaml up --build --watch",
+    "docker:prod": "docker compose up -d --build",
     "lint": "echo lint",
     "format": "npx prettier --write src/",
     "minify": "npx terser dist/server.js --module --ecma 2022 --compress drop_console=true --mangle --output dist/server.js",
